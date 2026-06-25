@@ -1,1 +1,6 @@
-/* Add CSS Styling */
+/* styles.css */
+
+p {
+    background-color: lightpink;
+    font-family: "Verdana", "DejaVu Sans", sans-serif;
+}
