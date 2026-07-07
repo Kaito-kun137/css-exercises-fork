@@ -2,28 +2,145 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 0;
   min-height: 100vh;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: auto 1fr auto;
 }
 
 .header {
+  font-weight: 900;
+  font-size: 32px;
   height: 72px;
   background: darkmagenta;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 16px;
+  grid-column: 1 / -1;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 16px;
+  box-sizing: border-box;
+  grid-row: 2;
+  grid-column: 2;
+  align-content: start;
 }
 
 .footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 72px;
   background: #eee;
   color: darkmagenta;
+  grid-column: 1 / -1;
 }
 
 .sidebar {
   width: 300px;
   background: royalblue;
   box-sizing: border-box;
+  grid-row: 2;
+  grid-column: 1;
+  padding: 16px 0;
+  font-weight: bold;
+}
+
+.sidebar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar li {
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 16px;
+  font-size: 16px;
+  width: 300px;
+}
+
+.sidebar a:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .card {
   border: 1px solid #eee;
   box-shadow: 2px 4px 16px rgba(0,0,0,.06);
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  padding: 16px;
+  box-sizing: border-box;
+  background: white;
+  overflow: hidden;
 }
+
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    grid-row: auto;
+    grid-column: 1 / -1;
+    width: auto;
+    padding: 0;
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .sidebar li {
+    flex: 1;
+    min-width: 150px;
+  }
+
+  .sidebar a {
+    width: auto;
+    text-align: center;
+  }
+
+  .container {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    font-size: 24px;
+    height: auto;
+    padding: 16px;
+  }
+
+  .card {
+    height: auto;
+    min-height: 250px;
+  }
+}
+  
